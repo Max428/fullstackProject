@@ -57,7 +57,6 @@ const NavBar = () => {
 
   return (
     <>
-      <Basket />
       <div
         style={{
           display: "flex",
@@ -66,7 +65,7 @@ const NavBar = () => {
           padding: "10px 20px 0px 20px",
         }}
       >
-        {authContext.isAuthenticated ? authNavBar() : unAuthNavBar()}
+        {/* {authContext.isAuthenticated ? authNavBar() : unAuthNavBar()} */}
       </div>
     </>
   );
