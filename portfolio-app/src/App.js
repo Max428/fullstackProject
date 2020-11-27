@@ -1,11 +1,18 @@
 import './App.css';
 import React from 'react';
-import {Chart} from "react-google-charts"
-function App() {
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import NavBar from './components/navbar';
+const App = () => {
   return (
-    <div className="App">
-      <h1>Min app</h1>
+    <Router>
+    <NavBar />
+    <div style={{ padding: "0px 20px" }}>
+      <Route exact path="/"  />
+      <Route path="/account" />
+      <Route path="/login" />
+      <Route path="/register" />
     </div>
+  </Router>
   );
 }
 
