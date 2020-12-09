@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { AuthContext } from "../contexts/AuthContext";
 
 const NavBar = () => {
@@ -65,7 +65,7 @@ const NavBar = () => {
           padding: "10px 20px 0px 20px",
         }}
       >
-        {/* {authContext.isAuthenticated ? authNavBar() : unAuthNavBar()} */}
+        {authContext.isAuthenticated ? authNavBar() : unAuthNavBar() }
       </div>
     </>
   );
