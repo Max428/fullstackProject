@@ -2,6 +2,10 @@ import './App.css';
 import React from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import NavBar from './components/navbar';
+import StockSite from './components/StockSite.js';
+
+
+
 const App = () => {
   return (
     <Router>
