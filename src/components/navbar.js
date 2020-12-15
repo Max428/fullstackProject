@@ -20,8 +20,13 @@ const NavBar = () => {
       <>
         <div style={{ display: "flex" }}>
           <NavLink to="/">
-            <p style={linkStyle()}>Market</p>
+            <p style={linkStyle()}>Home</p>
           </NavLink>
+          
+          <NavLink to="/portfolio">
+           <p style={linkStyle()}>Portfolio</p>
+          </NavLink>
+
           <NavLink to="/account">
             <p style={linkStyle()}>Account</p>
           </NavLink>
