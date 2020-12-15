@@ -1,17 +1,18 @@
 import React, { useContext } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-import { AuthContext } from "../contexts/AuthContext";
+// import { AuthContext } from "../contexts/AuthContext";
 
 const NavBar = () => {
 
   const linkStyle = () => {
     return { margin: "10px" };
   };
-  const authContext = useContext(AuthContext);
+  // const authContext = useContext(AuthContext);
+  const authContext = true;
   
 
   const logOut = () => {
-    authContext.setIsAuthenticated(false);
+    // authContext.setIsAuthenticated(false);
   };
 
   const authNavBar = () => {
@@ -65,7 +66,7 @@ const NavBar = () => {
           padding: "10px 20px 0px 20px",
         }}
       >
-        {authContext.isAuthenticated ? authNavBar() : unAuthNavBar() }
+        {authContext ? authNavBar() : unAuthNavBar() }
       </div>
     </>
   );
