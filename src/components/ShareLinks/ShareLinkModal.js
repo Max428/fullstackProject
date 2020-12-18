@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import './ShareLinkModal.scss';
+import './ShareLinkModal.sass';
 
 
 
