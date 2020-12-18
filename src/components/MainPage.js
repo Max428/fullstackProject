@@ -1,11 +1,11 @@
 import React from "react";
-import SharePortfolioButton from '../components/ShareButton.js';
+import SharePortfolioButton from './ShareLinks/ShareButton.js';
 
-const StockSite = () => {
+const MainPage = () => {
     return(<>
     <h1>Loppis</h1>
     <SharePortfolioButton/>
     </>)
 }
 
-export default StockSite;
+export default MainPage;
