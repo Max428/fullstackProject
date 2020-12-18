@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import StockCard from '../components/StockCard.js';
+import StockCard from '../components/StockCard/StockCard.js';
 
 const PortfolioPage = () =>{
     const   [stocks, setStocks] = useState([]);

@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-
+import './StockCardStyling.css';
 
 const StockCard = ({name, changePricetoday, latestPrice, boughtAt, totalReturn}) => {
 
