@@ -15,9 +15,11 @@ const SharePortfolioButton = ({name}) => {
         <button onClick={() => setShowModal(true)}>Dela portfölj</button>
         {showModal ? (
 
-            <ShareLinkModal/>
+            <ShareLinkModal 
+            closeModal={() => setShowModal(!showModal)}
+            />
         ) : null}
-    )
+    
     </>
     )}
 
