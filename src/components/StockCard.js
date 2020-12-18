@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 
 
-const StockCard = ({name, price}) => {
+const StockCard = ({name, changePricetoday, latestPrice, boughtAt, totalReturn}) => {
 
     useEffect(() => {
         
@@ -10,12 +10,23 @@ const StockCard = ({name, price}) => {
 
     return(
     
-    <div className="stock-card">
+    <tr className="stock-card" style={{
+        display: "flex",
+        justifyContent:"space-between",
+        padding: "20px",
+        
+        border: "1px black solid",
+        width: "100%"
+        }}>
+
+   <td>{name} </td> 
+   <td>{changePricetoday}</td>
+   <td>{latestPrice}</td>
+   <td>{boughtAt}</td>
+   <td>{totalReturn}</td>
     
-    <div>This is my stock: {name} with the price {price}</div>
     
-    
-    </div>
+    </tr>
     )
 }
 
