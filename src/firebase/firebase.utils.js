@@ -16,6 +16,41 @@ const config = {
 
 Firebase.initializeApp(config);
 
+//#region createUserDocument
+export const createUserDocument = async (
+    user,
+    firstName,
+    lastName
+) => {
+    if (!user) return;
+
+    const userRef = firestore.doc(`users/${user.uid}`);
+
+    const snapshot = await userRef.get();
+
+    if (!snapshot.exists) {
+        const createdAt = new Date();
+
+        try {
+            await userRef.set({
+                createdAt: createdAt,
+                birthday: '',
+                bio: '',
+                firstName: firstName,
+                lastName: lastName,
+                id: user.uid,
+                email: user.email,
+                active: true
+            });
+        } catch (err) {
+            console.log(err.message);
+        }
+    }
+
+    return userRef;
+};
+//#endregion
+
 export const auth = Firebase.auth();
 export const functions = Firebase.functions();
 export const firestore = Firebase.firestore();
