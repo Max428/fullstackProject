@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { NavLink, useHistory } from "react-router-dom";
+import {auth} from '../firebase/firebase.utils';
 // import { AuthContext } from "../contexts/AuthContext";
 
 const NavBar = () => {
@@ -9,7 +10,7 @@ const NavBar = () => {
   };
   // const authContext = useContext(AuthContext);
   const authContext = true;
-  
+  let history = useHistory();
 
   const logOut = () => {
     // authContext.setIsAuthenticated(false);
@@ -32,7 +33,14 @@ const NavBar = () => {
           </NavLink>
         </div>
         <div style={{ display: "flex" }}>
-          <button style={linkStyle()} onClick={logOut}>
+          <button style={linkStyle()} onClick={() => 
+          auth.signOut()
+          .then(() => localStorage.clear())
+          .then(() => history.push('/'))
+
+
+
+          }>
             Logout
           </button>
         </div>
