@@ -12,8 +12,35 @@ const NavBar = () => {
   const authContext = true;
   let history = useHistory();
 
-  const logOut = () => {
+  const LogOutButton = () => {
     // authContext.setIsAuthenticated(false);
+    return(
+
+      <>
+         <button style={linkStyle()} onClick={() => 
+          auth.signOut()
+          .then(() => localStorage.clear())
+          .then(() => history.push('/'))
+
+          }>
+            Logout
+          </button>
+      </>
+    )
+  };
+
+  const loginButtonAndRegisterButton = () => {
+
+
+return(
+//Visa registreringsmodal, loginmodal om man trycker på knapparna
+  <>
+  
+  <button>Register</button>
+  
+  <button>Login</button>
+  </>
+)
   };
 
   const authNavBar = () => {
@@ -33,16 +60,7 @@ const NavBar = () => {
           </NavLink>
         </div>
         <div style={{ display: "flex" }}>
-          <button style={linkStyle()} onClick={() => 
-          auth.signOut()
-          .then(() => localStorage.clear())
-          .then(() => history.push('/'))
-
-
-
-          }>
-            Logout
-          </button>
+          <LogOutButton/>
         </div>
       </>
     );
