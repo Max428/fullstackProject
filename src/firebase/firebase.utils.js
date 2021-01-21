@@ -6,7 +6,6 @@ import 'firebase/storage';
 
 const config = {
     apiKey: process.env.REACT_APP_API_KEY,
-    authDomain: 'cv-banken.firebaseapp.com',
     authDomain: "my-stock-app-d6095.firebaseapp.com",
     projectId: "my-stock-app-d6095",
     storageBucket: "my-stock-app-d6095.appspot.com",
