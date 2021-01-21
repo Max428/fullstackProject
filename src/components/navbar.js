@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext,useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import {auth} from '../firebase/firebase.utils';
 // import { AuthContext } from "../contexts/AuthContext";
@@ -9,8 +9,14 @@ const NavBar = () => {
     return { margin: "10px" };
   };
   // const authContext = useContext(AuthContext);
-  const authContext = false;
+  let authContext = false;
   let history = useHistory();
+
+  useEffect(() => {
+    if(auth.currentUser !== null){
+      authContext = true;
+  }
+  });
 
   const LogOutButton = () => {
     // authContext.setIsAuthenticated(false);
@@ -33,7 +39,6 @@ const NavBar = () => {
 
 
 return(
-//Visa registreringsmodal, loginmodal om man trycker på knapparna
   <>
   
   <button>Register</button>
@@ -94,7 +99,7 @@ return(
           padding: "10px 20px 0px 20px",
         }}
       >
-        {authContext ? authNavBar() : unAuthNavBar() }
+        {authContext ?  unAuthNavBar() : authNavBar()  }
       </div>
     </>
   );

@@ -1,7 +1,8 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {auth} from '../../firebase/firebase.utils.js';
 import LoginForm from '../LoginAndRegistrationForm/LoginForm.js';
 import ForgetPasswordForm from '../LoginAndRegistrationForm/ForgottenPasswordForm.js';
+import { useHistory } from "react-router-dom";
 const LoginPage = () => {
     
     ////#region Input values for login 
@@ -20,7 +21,14 @@ const LoginPage = () => {
     const [resetPasswordSucess, setResetPasswordSuccess] = useState('');
     ////#endregion
     
+    let history = useHistory();
 
+
+    useEffect(() => {
+        if(auth.currentUser !== null){
+            history.push('/')
+        }
+    });
 
     
     const clearEmailAndPassError = () => {
