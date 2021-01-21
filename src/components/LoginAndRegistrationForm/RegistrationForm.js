@@ -17,9 +17,9 @@ const RegistrationForm = ({
     registerPasswordError,
     firstNameError,
     lastNameError,
-    dropDownError,
-    setTermsClicked,
     clearEmailAndPassError,
+    regButton, 
+    setDisableRegButton
 }) => {
 
     return (
@@ -118,7 +118,13 @@ const RegistrationForm = ({
 
 
 
-                <button onClick={handleSignUp}>Registrera</button>
+                <button 
+                onClick={handleSignUp}
+                disabled={regButton}
+                >
+                    
+                    
+                    Registrera</button>
 
             </form>
         </div>

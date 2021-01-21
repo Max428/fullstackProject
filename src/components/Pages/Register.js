@@ -19,6 +19,8 @@ const RegisterPage = () => {
     const [firstNameError, setFirstNameError] = useState('');
     const [lastNameError, setLastNameError] = useState('');
 
+    const [regButton, setDisableRegButton] = useState(false);
+
     //Clears all Errors
     const ClearEmailAndPassError = () => {
         setRegisterEmailError('');
@@ -29,7 +31,9 @@ const RegisterPage = () => {
     };
 
     const handleSignUp = (e) => {
-        
+        //Disables the register button to be clicked again
+        setDisableRegButton(true);
+        //#endregion
         console.log(registerEmail);
         console.log(registerPassword);
         e.preventDefault();
@@ -53,6 +57,8 @@ const RegisterPage = () => {
                     firstName,
                     lastName,
                 );
+                alert("Användare registrerad!");
+                setDisableRegButton(false);
             })
             .catch((err) => {
                 switch (err.code) {
@@ -95,6 +101,7 @@ const RegisterPage = () => {
             firstNameError={firstNameError}
             lastNameError={lastNameError}
             clearEmailAndPassError={ClearEmailAndPassError}
+            regButton={regButton}
             
             
             
