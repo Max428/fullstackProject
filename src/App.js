@@ -5,7 +5,8 @@ import NavBar from './components/navbar';
 import Account from "./components/Account";
 import Portfolio from "./components/Portfolio.js";
 import MainPage from './components/MainPage.js';
-
+import Login from './components/Pages/Login.js';
+import Register from './components/Pages/Register.js';
 
 
 const App = () => {
@@ -16,8 +17,8 @@ const App = () => {
       <Route exact path="/"  component={MainPage}/>
       <Route path="/account" component={Account} />
       <Route path="/portfolio" component={Portfolio}/>
-      <Route path="/login" />
-      <Route path="/register" />
+      <Route path="/login" component={Login}/>
+      <Route path="/register" component={Register}/>
     </div>
   </Router>
   );
