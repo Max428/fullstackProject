@@ -9,7 +9,7 @@ const NavBar = () => {
     return { margin: "10px" };
   };
   // const authContext = useContext(AuthContext);
-  const authContext = true;
+  const authContext = false;
   let history = useHistory();
 
   const LogOutButton = () => {
@@ -80,9 +80,6 @@ return(
             <p style={linkStyle()}>Register</p>
           </NavLink>
         </div>
-        <NavLink to="/checkout">
-          <p style={linkStyle()}>Checkout</p>
-        </NavLink>
       </>
     );
   };
