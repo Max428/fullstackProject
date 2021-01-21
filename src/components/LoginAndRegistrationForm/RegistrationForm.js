@@ -1,56 +1,65 @@
 import React, {useEffect,useState} from 'react';
 
-const RegistrationForm = () => {
-    const [FirstName, setFirstName] = useState('');
+const RegistrationForm = ({
     
-    const [LastName, setLastName] = useState('');
-    
-    const [Email, setEmail] = useState('');
-    
-    const [Password, setPassword] = useState('');
+    handleSignUp,
+    registerEmail,
+    setRegisterEmail,
+    registerPassword,
+    setRegisterPassword,
+    confirmedPassword,
+    setConfirmedPassword,
+    firstName,
+    setFirstName,
+    lastName,
+    setLastname,
+    registerEmailError,
+    registerPasswordError,
+    firstNameError,
+    lastNameError,
+    dropDownError,
+    setTermsClicked,
+    clearEmailAndPassError,
+}) => {
 
-    const handleSignUp = (e) => {
-
-        e.preventDefault();
-        const TrimFirstName = FirstName.trim();
-
-        if (FirstName === '' || TrimFirstName === '') {
-            return setFirstNameError('Förnamn krävs!');
-        }
-        if (LastName === '') {
-            return setLastNameError('Efternamn krävs!');
-        }
-
-    }
     return (
         <div id="register-container">
             <form id="register-form" onSubmit={handleSignUp}>
                 <input 
+                style={{
+                    color: firstNameError? 'red' :'black',
+                    fontWeight: firstNameError ? 'bold' : 'black'
+                }}
+                className="input-style"
                 name="firstname"
-                placeholder="Firstname..."
+                placeholder="Förnamn"
                 autoFocus
-                onChange={(e) => setFirstName(e.target.value)}></input>
+                onFocus={clearEmailAndPassError}
+                value = {firstNameError ? firstNameError : firstName}
+                onChange={(e) => setFirstName(e.target.value)}>
+
+                </input>
                 
                 
                 <input 
                 name="lastname"
-                placeholder="lastname..."
+                placeholder="Efternamn"
                 autoFocus
-                onChange={(e) => setLastName(e.target.value)}></input>
+                onChange={(e) => setLastname(e.target.value)}></input>
                 
                 <input 
                 name="Email"
-                placeholder="Email..."
+                placeholder="Epostadress"
                 autoFocus
-                onChange={(e) => setEmail(e.target.value)}></input>
+                onChange={(e) => setRegisterEmail(e.target.value)}></input>
 
 <input 
                 name="Password"
-                placeholder="Password..."
+                placeholder="Lösenord"
                 autoFocus
-                onChange={(e) => setPassword(e.target.value)}></input>
+                onChange={(e) => setRegisterPassword(e.target.value)}></input>
 
-                <button>Register</button>
+                <button onClick={handleSignUp}>Register</button>
 
             </form>
         </div>

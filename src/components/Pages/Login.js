@@ -4,7 +4,7 @@ const LoginForm = () => {
     return (
         <div>
 
-            Logga in
+Min INLOGGSSIDA
         </div>
     );
   }

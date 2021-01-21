@@ -24,22 +24,20 @@ export const createUserDocument = async (
     if (!user) return;
 
     const userRef = firestore.doc(`users/${user.uid}`);
-
     const snapshot = await userRef.get();
+    const currentTime = new Date();
 
     if (!snapshot.exists) {
-        const createdAt = new Date();
 
         try {
             await userRef.set({
-                createdAt: createdAt,
-                birthday: '',
-                bio: '',
+                
+                active: true,
+                createdAt: currentTime,
+                email: user.email,
                 firstName: firstName,
                 lastName: lastName,
                 id: user.uid,
-                email: user.email,
-                active: true
             });
         } catch (err) {
             console.log(err.message);
