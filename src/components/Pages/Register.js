@@ -29,6 +29,9 @@ const RegisterPage = () => {
     };
 
     const handleSignUp = (e) => {
+        
+        console.log(registerEmail);
+        console.log(registerPassword);
         e.preventDefault();
         const trimFirstname = firstName.trim();
         if (registerPassword !== confirmedPassword) {
