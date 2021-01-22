@@ -1,13 +1,26 @@
-import React, { useEffect } from 'react';
+import React, { useEffect,useState } from 'react';
 import './StockCardStyling.css';
 
-const StockCard = ({name, changePricetoday, latestPrice, boughtAt, totalReturn}) => {
+const StockCard = ({name, boughtAt, latestPrice}) => {
 
+    const [totalReturn, setTotalReturn] = useState(0);
     useEffect(() => {
         
+    setTotalReturn(calculateTotalReturn());
     }, []);
 
 
+
+    
+
+    const calculateTotalReturn = () => {
+        if(boughtAt > 0 && latestPrice > 0 ){
+            return Math.round((((latestPrice/boughtAt) - 1) * 100));
+        }
+        else{
+            return 0;
+        }
+    }
     return(
     
     <tr className="stock-card" style={{
@@ -19,11 +32,10 @@ const StockCard = ({name, changePricetoday, latestPrice, boughtAt, totalReturn})
         width: "100%"
         }}>
 
-   <td>{name} </td> 
-   <td>{changePricetoday}</td>
-   <td>{latestPrice}</td>
-   <td>{boughtAt}</td>
-   <td>{totalReturn}</td>
+   <td>Namn: {name} </td> 
+   <td>Senaste pris: {latestPrice}</td>
+   <td>Köpt vid: {boughtAt}</td>
+   <td>Totalavkastning: {totalReturn}%</td>
     
     
     </tr>

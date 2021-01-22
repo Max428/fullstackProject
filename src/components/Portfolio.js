@@ -56,10 +56,9 @@ const PortfolioPage = () =>{
                 
             <StockCard 
             name={stock.name} 
-            changePricetoday={stock.changePricetoday}
+            key={stock.name}
             latestPrice={stock.latestPrice}
             boughtAt={stock.boughtAt}
-            totalReturn={stock.totalReturn}
             />
             ))}
 
