@@ -1,32 +1,24 @@
 import React, { useContext,useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import {auth} from '../firebase/firebase.utils';
-// import { AuthContext } from "../contexts/AuthContext";
+import { AuthContext } from "../contexts/AuthContext";
 
 const NavBar = () => {
 
   const linkStyle = () => {
     return { margin: "10px" };
   };
-  // const authContext = useContext(AuthContext);
-  let authContext = false;
+  const authContext = useContext(AuthContext);
   let history = useHistory();
 
-  useEffect(() => {
-    if(auth.currentUser !== null){
-      authContext = true;
-  }
-  });
-
   const LogOutButton = () => {
-    // authContext.setIsAuthenticated(false);
     return(
 
       <>
          <button style={linkStyle()} onClick={() => 
           auth.signOut()
           .then(() => localStorage.clear())
-          .then(() => history.push('/'))
+          .then(() => history.push('/')).then(() => {authContext.setIsAuthenticated(false)})
 
           }>
             Logout
@@ -35,18 +27,7 @@ const NavBar = () => {
     )
   };
 
-  const loginButtonAndRegisterButton = () => {
 
-
-return(
-  <>
-  
-  <button>Register</button>
-  
-  <button>Login</button>
-  </>
-)
-  };
 
   const authNavBar = () => {
     return (
@@ -99,7 +80,7 @@ return(
           padding: "10px 20px 0px 20px",
         }}
       >
-        {authContext ?  unAuthNavBar() : authNavBar()  }
+        {authContext.isAuthenticated ?   authNavBar() :unAuthNavBar() }
       </div>
     </>
   );

@@ -1,4 +1,42 @@
-// import React, { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
+import {auth} from '../firebase/firebase.utils.js';
+
+export const AuthContext = createContext();
+
+export default ({children}) => {
+    const [user, setUser] = useState(null);
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+
+        auth.onAuthStateChanged((user) => {
+            if(user){
+                console.log("THIS IS MY USER", user)
+                setUser(user)
+                setIsAuthenticated(true);
+                setIsLoaded(true);
+            }
+            else{
+                setIsLoaded(true);
+            }
+        })
+      }, []);
+
+      return (
+        <div>
+          {isLoaded ? (
+            <AuthContext.Provider
+              value={{ user, setUser, isAuthenticated, setIsAuthenticated }}
+            >
+              {children}
+            </AuthContext.Provider>
+          ) : (
+            <h1>Loading...</h1>
+          )}
+        </div>
+      );
+};
 
 // export const AuthContext = createContext();
 

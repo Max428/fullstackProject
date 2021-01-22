@@ -57,7 +57,11 @@ const LoginPage = () => {
 
     const handleSignIn = (e) => {
         e.preventDefault();
-        auth.signInWithEmailAndPassword(loginEmail, loginPassword).catch(
+        auth.signInWithEmailAndPassword(loginEmail, loginPassword).then((user) =>{
+            //User logged in therefore push to main page
+            history.push('/');
+
+        }).catch(
             (err) => {
                 switch (err.code) {
                     case 'auth/invalid-email':
