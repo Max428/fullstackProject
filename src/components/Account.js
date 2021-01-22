@@ -8,6 +8,19 @@ const authContext = useContext(AuthContext);
 
 useEffect(() => {
 
+    //ATT GÖRA: MÅSTE FÅ ID FRÅN AUTHCONTEXT SÅ DEN VISAR RÄTT USER
+
+    // firestore
+    // .collection('users')
+    // .doc(userid)
+    // .get()
+    // .then((res) => {
+    //     setUser({
+    //         ...res.data()
+    //     });
+    // })
+    // .catch((err) => alert(err.message));
+
 
 }, [])
 
