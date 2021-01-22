@@ -71,6 +71,7 @@ export const addStock = async (
     firestore.doc(`users/${user.uid}`)
     .get()
     .then((doc) => {
+        console.log("Försöker lägga till aktie...")
         console.log(doc.data());
         const userStocks = doc.data().stocks;
         console.log(doc.data().stocks);

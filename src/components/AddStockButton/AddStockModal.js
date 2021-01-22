@@ -12,13 +12,13 @@ const AddStockModal = ({closeModal}) => {
     const handleAddStock = (e) => {
         e.preventDefault();
         console.log(authContext.user.uid);
-        addStock(authContext.user.uid, stockName,boughtPrice,currentPrice);
+        addStock(authContext.user, stockName,boughtPrice,currentPrice);
     }
     return(
         <>
 
 <button onClick={closeModal}>Stäng</button>
-<form>
+<form onSubmit={handleAddStock}>
 
 
 <input placeholder="Aktienamn" onChange={(e) => setStockName(e.target.value)}></input>
