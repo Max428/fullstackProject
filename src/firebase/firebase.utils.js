@@ -5,12 +5,14 @@ import 'firebase/firestore';
 import 'firebase/storage';
 
 const config = {
-    apiKey: process.env.REACT_APP_API_KEY,
+    apiKey: "AIzaSyAwKK3Gv55j3bnMwfKH1BOqmbe5R2iErfk",
     authDomain: "my-stock-app-d6095.firebaseapp.com",
     projectId: "my-stock-app-d6095",
     storageBucket: "my-stock-app-d6095.appspot.com",
     messagingSenderId: "28648968255",
     appId: "1:28648968255:web:9ad70044499d3ff463a88a"
+
+    
 };
 
 Firebase.initializeApp(config);
