@@ -12,12 +12,14 @@ const PortfolioPage = () =>{
     const authContext = useContext(AuthContext);
     useEffect(() =>{
         GetAllStocks();
+        console.log("AKTIERNA",stocks);
 
     }, []);
 
 
     //Method to get all stocks
     const GetAllStocks =  async () =>{    
+        
             
        const userRef = firestore.doc(`users/${authContext.user.uid}`);
        const doc =  await userRef.get();

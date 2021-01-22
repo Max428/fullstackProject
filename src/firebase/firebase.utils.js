@@ -71,12 +71,16 @@ export const addStock = async (
     firestore.doc(`users/${user.uid}`)
     .get()
     .then((doc) => {
-        console.log("Försöker lägga till aktie...")
-        console.log(doc.data());
+
         const userStocks = doc.data().stocks;
-        console.log("VÄRDE RUTA ETT",doc.data().stocks[0].name);
-        userStocks.push(newlyAddedStock);
         console.log(userStocks);
+        userStocks.push(newlyAddedStock);
+        console.log("nya elementet pushat", userStocks);
+
+        if(doc.data().stocks[0].name == ''){
+            userStocks.shift();
+        }
+        console.log("EFTER BORTTAGNING AV FÖRSTA ELEMENTET",userStocks);
         return doc.ref.update({stocks : userStocks})
 
     })
