@@ -6,7 +6,6 @@ import 'firebase/storage';
 
 const config = {
     apiKey: process.env.REACT_APP_API_KEY,
-    authDomain: 'cv-banken.firebaseapp.com',
     authDomain: "my-stock-app-d6095.firebaseapp.com",
     projectId: "my-stock-app-d6095",
     storageBucket: "my-stock-app-d6095.appspot.com",
@@ -25,22 +24,20 @@ export const createUserDocument = async (
     if (!user) return;
 
     const userRef = firestore.doc(`users/${user.uid}`);
-
     const snapshot = await userRef.get();
+    const currentTime = new Date();
 
     if (!snapshot.exists) {
-        const createdAt = new Date();
 
         try {
             await userRef.set({
-                createdAt: createdAt,
-                birthday: '',
-                bio: '',
+                
+                active: true,
+                createdAt: currentTime,
+                email: user.email,
                 firstName: firstName,
                 lastName: lastName,
                 id: user.uid,
-                email: user.email,
-                active: true
             });
         } catch (err) {
             console.log(err.message);
