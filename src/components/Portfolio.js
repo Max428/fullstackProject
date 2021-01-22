@@ -28,7 +28,18 @@ const PortfolioPage = () =>{
        }
        else{
            doc.data().stocks.forEach(element => {
-               templist.push(element);
+               let obj = {
+                 name:element.name, 
+                 boughtAt : element.boughtAt,
+                 latestPrice : element.latestPrice
+                }
+
+                 if (obj.name != ''){
+                    templist.push(obj);
+                 }
+
+               
+               
            });
            setStocks(templist);
            

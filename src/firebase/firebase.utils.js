@@ -74,7 +74,7 @@ export const addStock = async (
         console.log("Försöker lägga till aktie...")
         console.log(doc.data());
         const userStocks = doc.data().stocks;
-        console.log(doc.data().stocks);
+        console.log("VÄRDE RUTA ETT",doc.data().stocks[0].name);
         userStocks.push(newlyAddedStock);
         console.log(userStocks);
         return doc.ref.update({stocks : userStocks})
