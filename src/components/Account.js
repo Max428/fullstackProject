@@ -1,12 +1,15 @@
-import React from 'react'
-import { firestore } from '../../firebase/firebase.utils';
-
+import React, {useEffect, useState,useContext} from 'react'
+import { firestore } from '../firebase/firebase.utils.js';
+import { AuthContext } from "../contexts/AuthContext";
 const Account = () =>{
 
 const FirstName = "Max";
+const authContext = useContext(AuthContext);
+
+useEffect(() => {
 
 
-
+}, [])
 
 
 
