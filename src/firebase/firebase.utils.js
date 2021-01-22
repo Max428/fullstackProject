@@ -5,7 +5,7 @@ import 'firebase/firestore';
 import 'firebase/storage';
 
 
-//FIXA SÅ PROCESS.ENV.REACT_APP_KEY funkar
+//FIXA SÅ PROCESS.ENV.REACT_APP_API_KEY funkar
 const config = {
     apiKey: process.env.REACT_APP_API_KEY,  
     authDomain: "my-stock-app-d6095.firebaseapp.com",
