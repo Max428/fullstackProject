@@ -18,7 +18,8 @@ const NavBar = () => {
          <button style={linkStyle()} onClick={() => 
           auth.signOut()
           .then(() => localStorage.clear())
-          .then(() => history.push('/')).then(() => {authContext.setIsAuthenticated(false)})
+          .then(() => history.push('/'))
+          .then(() => {authContext.setIsAuthenticated(false)})
 
           }>
             Logout

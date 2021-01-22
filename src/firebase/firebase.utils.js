@@ -54,8 +54,7 @@ export const createUserDocument = async (
 };
 //#endregion
 
-////#region 
-
+////#region Adds a stock to the user
 export const addStock = async (
     user,
     name,
@@ -64,16 +63,26 @@ export const addStock = async (
 ) =>{
     if(!user) return;
 
-    const userRef = firestore.doc(`users/${user.uid}/stocks`);
-    const snapshot = await userRef.get();
+    const newlyAddedStock = {
+        name : name,
+        boughtAt : boughtAt,
+        latestPrice : latestPrice}
 
-    if(snapshot.exists){
-        try{
-        }
-        catch{
+    firestore.doc(`users/${user.uid}`)
+    .get()
+    .then((doc) => {
+        console.log(doc.data());
+        const userStocks = doc.data().stocks;
+        console.log(doc.data().stocks);
+        userStocks.push(newlyAddedStock);
+        console.log(userStocks);
+        return doc.ref.update({stocks : userStocks})
 
-        }
-    }
+    })
+    .catch((error) => {
+        console.log('FEL', error)
+        return null;
+    })
 
 }
 ////#endregion
