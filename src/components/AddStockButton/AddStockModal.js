@@ -12,7 +12,7 @@ const AddStockModal = ({closeModal}) => {
     const handleAddStock = (e) => {
         e.preventDefault();
         console.log(authContext.user.uid);
-        addStock(authContext.user, stockName,boughtPrice,currentPrice);
+        addStock(authContext.user.uid, stockName,boughtPrice,currentPrice);
     }
     return(
         <>

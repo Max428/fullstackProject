@@ -1,9 +1,15 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useState, useContext} from 'react';
+import {AuthContext} from'../contexts/AuthContext.js';
+
+import {readAllStocks, firestore} from '../firebase/firebase.utils.js';
+
 import StockCard from '../components/StockCard/StockCard.js';
 
 const PortfolioPage = () =>{
-    const   [stocks, setStocks] = useState([]);
+    const [stocks, setStocks] = useState([]);
 
+    
+    const authContext = useContext(AuthContext);
     useEffect(() =>{
         GetAllStocks();
 
@@ -11,17 +17,29 @@ const PortfolioPage = () =>{
 
 
     //Method to get all stocks
-    const GetAllStocks = () =>{
+    const GetAllStocks =  async () =>{    
+            
+       const userRef = firestore.doc(`users/${authContext.user.uid}`);
+       const doc =  await userRef.get();
 
-        const templist = [];
-        const firststock = {name:"Codic", changePricetoday:"10%", latestPrice:"20", boughtAt:"10", totalReturn:"100%"}
-        const secondstock = {name:"aktie2", changePricetoday:"10%", latestPrice:"10", boughtAt:"10", totalReturn:"50%"}
+       let templist = [];
+       if(!doc.exists){
+           console.log("No such document");
+       }
+       else{
+           doc.data().stocks.forEach(element => {
+               templist.push(element);
+           });
+           setStocks(templist);
+           
 
-        templist.push(firststock);
-        templist.push(secondstock);
-
-        setStocks(templist);
-    }
+        
+        // doc.forEach(stock => {
+        //     console.log(stock);
+        // });
+        // setStocks(doc.data().stocks);
+       }
+}
     // const RenderAllStocks = () => {
     //     return (stocks.map((stock) => {
     //         <div>{stock.price}</div>
