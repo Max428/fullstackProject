@@ -12,7 +12,6 @@ const PortfolioPage = () =>{
     const authContext = useContext(AuthContext);
     useEffect(() =>{
         GetAllStocks();
-        console.log("AKTIERNA",stocks);
 
     }, []);
 
@@ -44,6 +43,8 @@ const PortfolioPage = () =>{
                
            });
            setStocks(templist);
+           
+        console.log("AKTIERNA",stocks);
            
 
         

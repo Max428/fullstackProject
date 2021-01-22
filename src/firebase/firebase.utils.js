@@ -75,13 +75,12 @@ export const addStock = async (
         const userStocks = doc.data().stocks;
         console.log(userStocks);
         userStocks.push(newlyAddedStock);
-        console.log("nya elementet pushat", userStocks);
 
         if(doc.data().stocks[0].name == ''){
             userStocks.shift();
         }
         console.log("EFTER BORTTAGNING AV FÖRSTA ELEMENTET",userStocks);
-        return doc.ref.update({stocks : userStocks})
+        return doc.ref.set({stocks : userStocks})
 
     })
     .catch((error) => {
