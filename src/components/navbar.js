@@ -1,19 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext,useEffect } from "react";
 import { NavLink, useHistory } from "react-router-dom";
-// import { AuthContext } from "../contexts/AuthContext";
+import {auth} from '../firebase/firebase.utils';
+import { AuthContext } from "../contexts/AuthContext";
 
 const NavBar = () => {
 
   const linkStyle = () => {
     return { margin: "10px" };
   };
-  // const authContext = useContext(AuthContext);
-  const authContext = true;
-  
+  const authContext = useContext(AuthContext);
+  let history = useHistory();
 
-  const logOut = () => {
-    // authContext.setIsAuthenticated(false);
+  const LogOutButton = () => {
+    return(
+
+      <>
+         <button style={linkStyle()} onClick={() => 
+          auth.signOut()
+          .then(() => localStorage.clear())
+          .then(() => history.push('/')).then(() => {authContext.setIsAuthenticated(false)})
+
+          }>
+            Logout
+          </button>
+      </>
+    )
   };
+
+
 
   const authNavBar = () => {
     return (
@@ -32,9 +46,7 @@ const NavBar = () => {
           </NavLink>
         </div>
         <div style={{ display: "flex" }}>
-          <button style={linkStyle()} onClick={logOut}>
-            Logout
-          </button>
+          <LogOutButton/>
         </div>
       </>
     );
@@ -54,9 +66,6 @@ const NavBar = () => {
             <p style={linkStyle()}>Register</p>
           </NavLink>
         </div>
-        <NavLink to="/checkout">
-          <p style={linkStyle()}>Checkout</p>
-        </NavLink>
       </>
     );
   };
@@ -71,7 +80,7 @@ const NavBar = () => {
           padding: "10px 20px 0px 20px",
         }}
       >
-        {authContext ? authNavBar() : unAuthNavBar() }
+        {authContext.isAuthenticated ?   authNavBar() :unAuthNavBar() }
       </div>
     </>
   );

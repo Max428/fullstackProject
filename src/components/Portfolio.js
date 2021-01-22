@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import StockCard from '../components/StockCard.js';
+import StockCard from '../components/StockCard/StockCard.js';
 
 const PortfolioPage = () =>{
     const   [stocks, setStocks] = useState([]);
@@ -14,8 +14,8 @@ const PortfolioPage = () =>{
     const GetAllStocks = () =>{
 
         const templist = [];
-        const firststock = {name:"aktie1", price:"20"}
-        const secondstock = {name:"aktie2", price:"10"}
+        const firststock = {name:"Codic", changePricetoday:"10%", latestPrice:"20", boughtAt:"10", totalReturn:"100%"}
+        const secondstock = {name:"aktie2", changePricetoday:"10%", latestPrice:"10", boughtAt:"10", totalReturn:"50%"}
 
         templist.push(firststock);
         templist.push(secondstock);
@@ -31,14 +31,21 @@ const PortfolioPage = () =>{
     return (
 
 
-        <div className="portfolio">
-            
+        <table className="portfolio" style={{
+            width: "50%"
+        }}>
             {stocks.map((stock) => (
                 
-            <StockCard name={stock.name} price={stock.price}/>
+            <StockCard 
+            name={stock.name} 
+            changePricetoday={stock.changePricetoday}
+            latestPrice={stock.latestPrice}
+            boughtAt={stock.boughtAt}
+            totalReturn={stock.totalReturn}
+            />
             ))}
 
-        </div>
+        </table>
 
         
     )
