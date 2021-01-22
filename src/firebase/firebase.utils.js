@@ -30,6 +30,7 @@ export const createUserDocument = async (
     const userRef = firestore.doc(`users/${user.uid}`);
     const snapshot = await userRef.get();
     const currentTime = new Date();
+    const stocks = [{name : '', boughtAt : 0, latestPrice : 0 }]
 
     if (!snapshot.exists) {
 
@@ -42,6 +43,7 @@ export const createUserDocument = async (
                 firstName: firstName,
                 lastName: lastName,
                 id: user.uid,
+                stocks: stocks,
             });
         } catch (err) {
             console.log(err.message);
@@ -51,6 +53,30 @@ export const createUserDocument = async (
     return userRef;
 };
 //#endregion
+
+////#region 
+
+export const addStock = async (
+    user,
+    name,
+    boughtAt,
+    latestPrice
+) =>{
+    if(!user) return;
+
+    const userRef = firestore.doc(`users/${user.uid}/stocks`);
+    const snapshot = await userRef.get();
+
+    if(snapshot.exists){
+        try{
+        }
+        catch{
+
+        }
+    }
+
+}
+////#endregion
 
 export const auth = Firebase.auth();
 export const functions = Firebase.functions();

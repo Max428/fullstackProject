@@ -1,7 +1,7 @@
 import React, {useEffect,useState} from 'react';
 import RegistrationForm from '../LoginAndRegistrationForm/RegistrationForm.js';
 import { auth, createUserDocument } from '../../firebase/firebase.utils.js';
-
+import {useHistory} from 'react-router-dom';
 const RegisterPage = () => {
 
     const [registerEmail, setRegisterEmail] = useState('');
@@ -21,6 +21,8 @@ const RegisterPage = () => {
 
     const [regButton, setDisableRegButton] = useState(false);
 
+    let history = useHistory();
+
     //Clears all Errors
     const ClearEmailAndPassError = () => {
         setRegisterEmailError('');
@@ -39,12 +41,16 @@ const RegisterPage = () => {
         e.preventDefault();
         const trimFirstname = firstName.trim();
         if (registerPassword !== confirmedPassword) {
+            setDisableRegButton(false);
             return setRegisterPasswordError('Lösenordet matchar inte!');
+            
         }
         if (firstName === '' || trimFirstname === '') {
+            setDisableRegButton(false);
             return setFirstNameError('Förnamn krävs!');
         }
         if (lastName === '') {
+            setDisableRegButton(false);
             return setLastNameError('Efternamn krävs!');
         }
         auth.createUserWithEmailAndPassword(
@@ -58,25 +64,29 @@ const RegisterPage = () => {
                     lastName,
                 );
                 alert("Användare registrerad!");
-                setDisableRegButton(false);
+                history.push('/');
             })
             .catch((err) => {
                 switch (err.code) {
                     case 'auth/invalid-email':
                         setRegisterEmailError('Ogiltig E-postadress!');
+                        setDisableRegButton(false);
                         break;
                     case 'auth/email-already-in-use':
                         setRegisterEmailError(
                             'Användare är redan registrerad!'
                         );
+                        setDisableRegButton(false);
                         break;
                     case 'auth/weak-password':
                         setRegisterPasswordError(
                             'Lösenordet måste innehålla minst 6 tecken!'
                         );
+                        setDisableRegButton(false);
                         break;
                     default:
                         alert('Något gick fel!');
+                        setDisableRegButton(false);
                 }
             });
     };
