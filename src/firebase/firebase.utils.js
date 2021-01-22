@@ -87,6 +87,25 @@ export const addStock = async (
 }
 ////#endregion
 
+//////#region 
+
+export const readAllStocks = async (
+user
+) => {
+    firestore.doc(`users/${user.uid}`)
+    .get()
+    .then((doc) => {
+        return doc.data().stocks;
+    })
+    .catch((error) => {
+        console.log('FEL', error)
+        return null;
+    })
+
+}
+
+////#endregion
+
 export const auth = Firebase.auth();
 export const functions = Firebase.functions();
 export const firestore = Firebase.firestore();
