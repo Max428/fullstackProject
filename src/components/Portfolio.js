@@ -20,7 +20,7 @@ const PortfolioPage = () =>{
     const GetAllStocks =  async () =>{    
         
             
-       const userRef = firestore.doc(`users/${authContext.user.uid}`);
+       const userRef = firestore.doc(`users/${authContext.user}`);
        const doc =  await userRef.get();
 
        let templist = [];
@@ -35,11 +35,9 @@ const PortfolioPage = () =>{
                  latestPrice : element.latestPrice
                 }
 
-                 if (obj.name != ''){
+                 if (obj.name.length > 0){
                     templist.push(obj);
                  }
-
-               
                
            });
            setStocks(templist);

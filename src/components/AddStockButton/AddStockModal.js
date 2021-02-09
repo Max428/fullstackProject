@@ -11,7 +11,7 @@ const AddStockModal = ({closeModal}) => {
 
     const handleAddStock = (e) => {
         e.preventDefault();
-        console.log(authContext.user.uid);
+        console.log(authContext.user);
         addStock(authContext.user, stockName,boughtPrice,currentPrice);
         alert("Aktie tillagd! (refresha sidan, det har fixas sen)");
     }

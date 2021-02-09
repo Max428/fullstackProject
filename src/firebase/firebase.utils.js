@@ -68,15 +68,19 @@ export const addStock = async (
         boughtAt : boughtAt,
         latestPrice : latestPrice}
 
-    firestore.doc(`users/${user.uid}`)
+    firestore.doc(`users/${user}`)
     .get()
     .then((doc) => {
-
+        console.log("USER IN ADDSTOCK", user)
         const userStocks = doc.data().stocks;
-        console.log(userStocks);
+
+        if(userStocks[0].name == ''){
+            userStocks.shift();
+        }
+        console.log("usersstock",userStocks);
         userStocks.push(newlyAddedStock);
 
-        return doc.ref.update({stocks : userStocks})
+        return doc.ref.set({stocks : userStocks})
 
     })
     .catch((error) => {
@@ -93,10 +97,11 @@ export const DeleteStock = async (user, stockName) => {
     if(!user)
     return;
 
-    firestore.doc(`users/${user.uid}`)
+    firestore.doc(`users/${user}`)
     .get()
     .then((doc) => {
 
+        console.log("DETTA ÄR USERN I DELETSTOCK", user)
         const userStocks = doc.data().stocks;
 
       const tempArray = userStocks.filter(stock => stock.name != stockName)
@@ -125,7 +130,7 @@ export const EditStock = async (user, stockName, boughtAt,latestPrice) => {
         latestPrice : latestPrice,
     }
 
-    firestore.doc(`users/${user.uid}`)
+    firestore.doc(`users/${user}`)
     .get()
     .then((doc) => {
 

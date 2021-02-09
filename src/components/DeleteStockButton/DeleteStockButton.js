@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import DeleteStockModal from '../DeleteStockModal/DeleteStockModal.js';
+import DeleteStockModal from '../DeleteStockButton/DeleteStockModal.js'
 
 const DeleteStockButton = ({stockname}) => {
 
