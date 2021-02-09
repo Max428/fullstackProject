@@ -13,7 +13,8 @@ export default ({children}) => {
         auth.onAuthStateChanged((user) => {
             if(user){
                 console.log("THIS IS MY USER", user)
-                setUser(user)
+                getUserData(user.uid);
+                setUser(user.uid)
                 setIsAuthenticated(true);
                 setIsLoaded(true);
             }
@@ -22,6 +23,10 @@ export default ({children}) => {
             }
         })
       }, []);
+
+      const getUserData = (userId) => {
+        setUser();
+      }
 
       return (
         <div>

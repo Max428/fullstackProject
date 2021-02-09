@@ -5,8 +5,6 @@ const AddStockButton = () => {
 
     const [showStockModal, setShowModal] = useState(false);
 
-
-
     return(
         <>
         <button onClick={() => setShowModal(true)}>Lägg till aktie</button>

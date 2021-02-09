@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react';
 import {DeleteStock} from '../../firebase/firebase.utils.js'; //DeleteStock
 import {AuthContext} from '../../contexts/AuthContext.js';
-const DeleteStockModal = ({closeModal}) => {
+const DeleteStockModal = ({closeModal,stockName}) => {
 
 
     const authContext = useContext(AuthContext);

@@ -1,4 +1,6 @@
 import React, { useEffect,useState } from 'react';
+import DeleteStockButton from '../DeleteStockButton/DeleteStockButton.js'
+
 import './StockCardStyling.css';
 
 const StockCard = ({name, boughtAt, latestPrice}) => {
@@ -7,11 +9,7 @@ const StockCard = ({name, boughtAt, latestPrice}) => {
     useEffect(() => {
         
     setTotalReturn(calculateTotalReturn());
-    }, []);
-
-
-
-    
+    }, [])
 
     const calculateTotalReturn = () => {
         if(boughtAt > 0 && latestPrice > 0 ){
@@ -22,7 +20,11 @@ const StockCard = ({name, boughtAt, latestPrice}) => {
         }
     }
     return(
-    
+        
+        <>
+        <DeleteStockButton
+        stockname = {name}
+        />
     <tr className="stock-card" style={{
         display: "flex",
         justifyContent:"space-between",
@@ -36,9 +38,10 @@ const StockCard = ({name, boughtAt, latestPrice}) => {
    <td>Senaste pris: {latestPrice}</td>
    <td>Köpt vid: {boughtAt}</td>
    <td>Totalavkastning: {totalReturn}%</td>
-    
+ 
     
     </tr>
+    </>
     )
 }
 

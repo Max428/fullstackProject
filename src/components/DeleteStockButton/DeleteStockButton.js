@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import DeleteStockModal from '../DeleteStockModal/DeleteStockModal.js';
 
-const DeleteStockButton = () => {
+const DeleteStockButton = ({stockname}) => {
 
     const [showStockModal, setShowModal] = useState(false);
-
-
 
     return(
         <>
@@ -15,6 +13,7 @@ const DeleteStockButton = () => {
 {showStockModal ? (
     <DeleteStockModal
     closeModal={() => setShowModal(!showStockModal)}
+    stockname={stockname}
     />
     ) :null }
         </>
