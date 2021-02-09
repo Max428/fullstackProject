@@ -100,6 +100,40 @@ export const DeleteStock = async (user, stockName) => {
         const userStocks = doc.data().stocks;
 
       const tempArray = userStocks.filter(stock => stock.name != stockName)
+
+        return doc.ref.update({stocks : tempArray})
+
+    })
+    .catch((error) => {
+        console.log('FEL', error)
+        return null;
+    })
+
+
+}
+////#endregion
+
+////#region 
+
+export const EditStock = async (user, stockName, boughtAt,boughtPrice,latestPrice) => {
+    if(!user)
+    return;
+
+    const EditedStock = {
+        name : stockName,
+        boughtAt : boughtAt,
+        boughtPrice : boughtPrice,
+        latestPrice : latestPrice,
+    }
+
+    firestore.doc(`users/${user.uid}`)
+    .get()
+    .then((doc) => {
+
+        const userStocks = doc.data().stocks;
+
+      const tempArray = userStocks.filter(stock => stock.name != stockName);
+      tempArray.push(EditedStock)
       
         return doc.ref.update({stocks : tempArray})
 
@@ -112,6 +146,7 @@ export const DeleteStock = async (user, stockName) => {
 
 }
 ////#endregion
+
 
 //////#region 
 
