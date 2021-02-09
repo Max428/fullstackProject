@@ -1,17 +1,19 @@
 import React, { useEffect, useState } from 'react';
-import AddStockModal from '../AddStockButton/AddStockModal.js';
+import EditStockModal from '../EditStockModal/EditStockModal.js';
 
-const AddStockButton = () => {
+const EditStockButton = () => {
 
     const [showStockModal, setShowModal] = useState(false);
 
+
+
     return(
         <>
-        <button onClick={() => setShowModal(true)}>Lägg till aktie</button>
+        <button onClick={() => setShowModal(true)}>Redigera aktie</button>
 
 
 {showStockModal ? (
-    <AddStockModal
+    <EditStockModal
     closeModal={() => setShowModal(!showStockModal)}
     />
     ) :null }
@@ -19,4 +21,4 @@ const AddStockButton = () => {
     )
 }
 
-export default AddStockButton;
+export default EditStockButton;
