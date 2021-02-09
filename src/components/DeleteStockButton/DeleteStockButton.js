@@ -5,6 +5,10 @@ const DeleteStockButton = ({stockname}) => {
 
     const [showStockModal, setShowModal] = useState(false);
 
+    useEffect(() => {
+        console.log("STOCKNAME I DELETESTOCKBUTTON",stockname);
+    })
+
     return(
         <>
         <button onClick={() => setShowModal(true)}>Ta bort aktie</button>

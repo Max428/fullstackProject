@@ -80,7 +80,7 @@ export const addStock = async (
         console.log("usersstock",userStocks);
         userStocks.push(newlyAddedStock);
 
-        return doc.ref.set({stocks : userStocks})
+        return doc.ref.update({stocks : userStocks})
 
     })
     .catch((error) => {
@@ -101,7 +101,7 @@ export const DeleteStock = async (user, stockName) => {
     .get()
     .then((doc) => {
 
-        console.log("DETTA ÄR USERN I DELETSTOCK", user)
+        console.log("DETTA ÄR STOCKNAME I DELETSTOCK", stockName)
         const userStocks = doc.data().stocks;
 
       const tempArray = userStocks.filter(stock => stock.name != stockName)
