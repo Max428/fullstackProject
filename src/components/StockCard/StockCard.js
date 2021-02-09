@@ -1,5 +1,6 @@
 import React, { useEffect,useState } from 'react';
 import DeleteStockButton from '../DeleteStockButton/DeleteStockButton.js'
+import EditStockButton from '../EditStockButton/EditStockButton.js';
 
 import './StockCardStyling.css';
 
@@ -24,6 +25,9 @@ const StockCard = ({name, boughtAt, latestPrice}) => {
         <>
         <DeleteStockButton
         stockname = {name}
+        />
+        <EditStockButton
+        stockname={name}
         />
     <tr className="stock-card" style={{
         display: "flex",

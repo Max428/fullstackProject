@@ -1,9 +1,10 @@
 import React, {useEffect, useState, useContext} from 'react';
 import {EditStock} from '../../firebase/firebase.utils.js';
 import {AuthContext} from '../../contexts/AuthContext.js';
-const EditStockModal = ({closeModal}) => {
 
-    const [stockName, setStockName] = useState('');
+const EditStockModal = ({closeModal,stockname}) => {
+
+    const [stockName, setStockName] = useState(stockname);
     const [boughtPrice, setBoughtPrice] = useState('');
     const [currentPrice, setCurrentPrice] = useState('');
 
