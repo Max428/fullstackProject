@@ -115,14 +115,13 @@ export const DeleteStock = async (user, stockName) => {
 
 ////#region 
 
-export const EditStock = async (user, stockName, boughtAt,boughtPrice,latestPrice) => {
+export const EditStock = async (user, stockName, boughtAt,latestPrice) => {
     if(!user)
     return;
 
     const EditedStock = {
         name : stockName,
         boughtAt : boughtAt,
-        boughtPrice : boughtPrice,
         latestPrice : latestPrice,
     }
 
