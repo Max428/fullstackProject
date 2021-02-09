@@ -73,20 +73,42 @@ export const addStock = async (
     .then((doc) => {
 
         const userStocks = doc.data().stocks;
+        console.log(userStocks);
         userStocks.push(newlyAddedStock);
 
-        if(doc.data().stocks[0].name == ''){
-            userStocks.shift();
-        }
-        return doc.ref.update({
-            stocks : userStocks,
-        })
+        return doc.ref.update({stocks : userStocks})
 
     })
     .catch((error) => {
         console.log('FEL', error)
         return null;
     })
+
+}
+////#endregion
+
+////#region 
+
+export const DeleteStock = async (user, stockName) => {
+    if(!user)
+    return;
+
+    firestore.doc(`users/${user.uid}`)
+    .get()
+    .then((doc) => {
+
+        const userStocks = doc.data().stocks;
+
+      const tempArray = userStocks.filter(stock => stock.name != stockName)
+      
+        return doc.ref.update({stocks : tempArray})
+
+    })
+    .catch((error) => {
+        console.log('FEL', error)
+        return null;
+    })
+
 
 }
 ////#endregion
