@@ -73,14 +73,14 @@ export const addStock = async (
     .then((doc) => {
 
         const userStocks = doc.data().stocks;
-        console.log(userStocks);
         userStocks.push(newlyAddedStock);
 
         if(doc.data().stocks[0].name == ''){
             userStocks.shift();
         }
-        console.log("EFTER BORTTAGNING AV FÖRSTA ELEMENTET",userStocks);
-        return doc.ref.set({stocks : userStocks})
+        return doc.ref.update({
+            stocks : userStocks,
+        })
 
     })
     .catch((error) => {
