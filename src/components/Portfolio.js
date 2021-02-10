@@ -41,15 +41,8 @@ const PortfolioPage = () =>{
                
            });
            setStocks(templist);
+           return(doc.data().stocks);
            
-        console.log("AKTIERNA",stocks);
-           
-
-        
-        // doc.forEach(stock => {
-        //     console.log(stock);
-        // });
-        // setStocks(doc.data().stocks);
        }
 }
     // const RenderAllStocks = () => {
@@ -71,6 +64,9 @@ const PortfolioPage = () =>{
             key={stock.name}
             latestPrice={stock.latestPrice}
             boughtAt={stock.boughtAt}
+            setStocks = {setStocks}
+            getAllStocks={GetAllStocks}
+            
             />
             ))}
 

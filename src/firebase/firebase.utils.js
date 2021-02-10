@@ -120,26 +120,29 @@ export const DeleteStock = async (user, stockName) => {
 
 ////#region 
 
-export const EditStock = async (user, stockName, boughtAt,latestPrice) => {
+export const EditStock = async (user, stockToEdit, stockName, boughtAt,latestPrice) => {
     if(!user)
     return;
-
     const EditedStock = {
         name : stockName,
         boughtAt : boughtAt,
         latestPrice : latestPrice,
     }
-
     firestore.doc(`users/${user}`)
     .get()
     .then((doc) => {
 
-        const userStocks = doc.data().stocks;
+    
+      const userStocks = doc.data().stocks;
 
-      const tempArray = userStocks.filter(stock => stock.name != stockName);
-      tempArray.push(EditedStock)
-      
-        return doc.ref.update({stocks : tempArray})
+      console.log("stock.name", userStocks[1].name);
+      console.log("stockName", stockName)
+
+      const tempArray = userStocks.filter(stock => stock.name !== stockToEdit);
+      console.log("MIN TEMPARRAY I EDITSTOck",tempArray);
+      tempArray.push(EditedStock);
+    //   console.log("MIN TEMPARRAY EFTER PUSH", tempArray);
+        return doc.ref.update({stocks : tempArray});
 
     })
     .catch((error) => {
