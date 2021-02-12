@@ -18,7 +18,7 @@ const EditStockModal = ({closeModal,stockname, getAllStocks, setStocks}) => {
         EditStock(authContext.user, stockname, newStockName, boughtPrice,currentPrice);
         getAllStocks().then(data => {
             setStocks(data);
-        });
+        })
         // alert("Aktie redigerad! (refresha sidan, det har fixas sen)");
     }
     return(

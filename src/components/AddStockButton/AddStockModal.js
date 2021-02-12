@@ -12,11 +12,12 @@ const AddStockModal = ({closeModal, getAllStocks, setStocks}) => {
     const handleAddStock = (e) => {
         e.preventDefault();
         console.log(authContext.user);
-        addStock(authContext.user, stockName,boughtPrice,currentPrice);
-        getAllStocks().then(data => {
-            setStocks(data);
-        });
-        alert("aktie tillagd (refresha sidan)")
+        addStock(authContext.user, stockName,boughtPrice,currentPrice).then(
+            getAllStocks().then(data => {
+                setStocks(data);
+            })
+        );
+
         
     }
     return(

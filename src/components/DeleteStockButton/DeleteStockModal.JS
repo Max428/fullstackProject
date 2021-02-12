@@ -11,7 +11,7 @@ const DeleteStockModal = ({closeModal,stockname, getAllStocks, setStocks}) => {
         DeleteStock(authContext.user, stockname);
         getAllStocks().then(data => {
             setStocks(data);
-        });
+        })
     }
     return(
         <>

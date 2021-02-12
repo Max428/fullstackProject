@@ -39,7 +39,7 @@ const PortfolioOverview = () =>{
                   }
                 
             });
-            setStocks(templist);
+            setStocks(templist)
             return(doc.data().stocks);
             
         }
