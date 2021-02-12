@@ -131,28 +131,17 @@ export const EditStock = async (user, stockToEdit, stockName, boughtAt,latestPri
     firestore.doc(`users/${user}`)
     .get()
     .then((doc) => {
-
-    
       const userStocks = doc.data().stocks;
-
-      console.log("stock.name", userStocks[1].name);
-      console.log("stockName", stockName)
-
       const tempArray = userStocks.filter(stock => stock.name !== stockToEdit);
       console.log("MIN TEMPARRAY I EDITSTOck",tempArray);
       tempArray.push(EditedStock);
     //   console.log("MIN TEMPARRAY EFTER PUSH", tempArray);
-    doc.ref.update({stocks : tempArray});
-    return true;
-
-
+    return doc.ref.update({stocks : tempArray});
     })
     .catch((error) => {
         console.log('FEL', error)
         return null;
     })
-
-
 }
 ////#endregion
 

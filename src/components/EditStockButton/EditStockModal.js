@@ -13,23 +13,22 @@ const EditStockModal = ({closeModal,stockname, getAllStocks, setStocks}) => {
 
     const authContext = useContext(AuthContext);
 
-    const handleAddStock = async (e) => {
+    const handleAddStock =  (e) => {
         e.preventDefault();
-        EditStock(authContext.user, stockname, newStockName, boughtPrice,currentPrice)
-        .then(() => {
-            
-                getAllStocks().then(data => {
-                    console.log("MIN DATTTA", data);
-                    setStocks(data);
-                })
-
-        })
+        EditStock(authContext.user, stockname, newStockName, boughtPrice,currentPrice);
+            getAllStocks().then(data => {
+                console.log("MIN DATTTA", data);
+                setStocks(data);
+            })
+        }
+    
 
 
-        // alert("Aktie redigerad! (refresha sidan, det har fixas sen)");
-    }
-    return(
-        <>
+
+
+
+return(
+<>
 
 <button onClick={closeModal}>Stäng</button>
 <div>
