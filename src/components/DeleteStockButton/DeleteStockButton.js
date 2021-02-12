@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+
 import DeleteStockModal from './DeleteStockModal'
 
 const DeleteStockButton = ({stockname, getAllStocks, setStocks}) => {

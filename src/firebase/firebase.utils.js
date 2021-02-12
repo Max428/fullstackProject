@@ -81,10 +81,10 @@ export const addStock = async (
         userStocks.push(newlyAddedStock);
 
         return doc.ref.update({stocks : userStocks})
-
+        
     })
     .catch((error) => {
-        console.log('FEL', error)
+        console.log('FEL ', error)
         return null;
     })
 
@@ -142,7 +142,8 @@ export const EditStock = async (user, stockToEdit, stockName, boughtAt,latestPri
       console.log("MIN TEMPARRAY I EDITSTOck",tempArray);
       tempArray.push(EditedStock);
     //   console.log("MIN TEMPARRAY EFTER PUSH", tempArray);
-        return doc.ref.update({stocks : tempArray});
+    return doc.ref.update({stocks : tempArray});
+
 
     })
     .catch((error) => {

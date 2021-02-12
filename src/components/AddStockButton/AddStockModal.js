@@ -9,14 +9,18 @@ const AddStockModal = ({closeModal, getAllStocks, setStocks}) => {
 
     const authContext = useContext(AuthContext);
 
-    const handleAddStock = (e) => {
+    const handleAddStock =  (e) => {
         e.preventDefault();
-        console.log(authContext.user);
-        addStock(authContext.user, stockName,boughtPrice,currentPrice).then(
+        addStock(authContext.user, stockName,boughtPrice,currentPrice);
+
             getAllStocks().then(data => {
-                setStocks(data);
-            })
+            console.log("MIN DATA", data);
+            setStocks(data);
+             }
         );
+
+
+        
 
         
     }
