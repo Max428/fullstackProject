@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import DeleteStockModal from '../DeleteStockButton/DeleteStockModal.js'
+import DeleteStockModal from './DeleteStockModal.js'
 
 const DeleteStockButton = ({stockname, getAllStocks, setStocks}) => {
 
