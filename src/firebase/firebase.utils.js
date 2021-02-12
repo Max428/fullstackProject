@@ -140,10 +140,10 @@ export const EditStock = async (user, stockToEdit, stockName, boughtAt,latestPri
 
       const tempArray = userStocks.filter(stock => stock.name !== stockToEdit);
       console.log("MIN TEMPARRAY I EDITSTOck",tempArray);
-      tempArray.push(EditedStock);
+      tempArray.push(EditedStock)<s;
     //   console.log("MIN TEMPARRAY EFTER PUSH", tempArray);
-    doc.ref.update({stocks : tempArray});
-    return true;
+   return doc.ref.update({stocks : tempArray});
+
 
 
     })
