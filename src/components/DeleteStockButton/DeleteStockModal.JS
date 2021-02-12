@@ -12,6 +12,7 @@ const DeleteStockModal = ({closeModal,stockname, getAllStocks, setStocks}) => {
         getAllStocks().then(data => {
             setStocks(data);
         });
+        alert("Aktie borttagen");
     }
     return(
         <>
