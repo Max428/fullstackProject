@@ -142,7 +142,8 @@ export const EditStock = async (user, stockToEdit, stockName, boughtAt,latestPri
       console.log("MIN TEMPARRAY I EDITSTOck",tempArray);
       tempArray.push(EditedStock);
     //   console.log("MIN TEMPARRAY EFTER PUSH", tempArray);
-    return doc.ref.update({stocks : tempArray});
+    doc.ref.update({stocks : tempArray});
+    return true;
 
 
     })
