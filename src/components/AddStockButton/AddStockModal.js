@@ -16,6 +16,8 @@ const AddStockModal = ({closeModal, getAllStocks, setStocks}) => {
         getAllStocks().then(data => {
             setStocks(data);
         });
+        alert("aktie tillagd (refresha sidan)")
+        
     }
     return(
         <>

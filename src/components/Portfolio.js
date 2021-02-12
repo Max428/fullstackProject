@@ -5,55 +5,9 @@ import {readAllStocks, firestore} from '../firebase/firebase.utils.js';
 
 import StockCard from '../components/StockCard/StockCard.js';
 
-const PortfolioPage = () =>{
-    const [stocks, setStocks] = useState([]);
-
-    
-    const authContext = useContext(AuthContext);
-    useEffect(() =>{
-        GetAllStocks();
-
-    }, []);
-
-
-    //Method to get all stocks
-    const GetAllStocks =  async () =>{    
-        
-            
-       const userRef = firestore.doc(`users/${authContext.user}`);
-       const doc =  await userRef.get();
-
-       let templist = [];
-       if(!doc.exists){
-           console.log("No such document");
-       }
-       else{
-           doc.data().stocks.forEach(element => {
-               let obj = {
-                 name:element.name, 
-                 boughtAt : element.boughtAt,
-                 latestPrice : element.latestPrice
-                }
-
-                 if (obj.name.length > 0){
-                    templist.push(obj);
-                 }
-               
-           });
-           setStocks(templist);
-           return(doc.data().stocks);
-           
-       }
-}
-    // const RenderAllStocks = () => {
-    //     return (stocks.map((stock) => {
-    //         <div>{stock.price}</div>
-    //     }))
-    // }
+const PortfolioPage = ({stocks, getAllStocks, setStocks}) =>{
 
     return (
-
-
         <table className="portfolio" style={{
             width: "50%"
         }}>
@@ -65,7 +19,7 @@ const PortfolioPage = () =>{
             latestPrice={stock.latestPrice}
             boughtAt={stock.boughtAt}
             setStocks = {setStocks}
-            getAllStocks={GetAllStocks}
+            getAllStocks={getAllStocks}
             
             />
             ))}
