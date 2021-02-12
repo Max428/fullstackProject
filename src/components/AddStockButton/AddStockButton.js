@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import AddStockModal from '../AddStockButton/AddStockModal.js';
 
-const AddStockButton = () => {
+const AddStockButton = ({getAllStocks, setStocks}) => {
 
     const [showStockModal, setShowModal] = useState(false);
 
@@ -13,6 +13,8 @@ const AddStockButton = () => {
 {showStockModal ? (
     <AddStockModal
     closeModal={() => setShowModal(!showStockModal)}
+    getAllStocks={getAllStocks}
+    setStocks={setStocks}
     />
     ) :null }
         </>

@@ -1,9 +1,10 @@
 import React, { useEffect,useState } from 'react';
 import DeleteStockButton from '../DeleteStockButton/DeleteStockButton.js'
+import EditStockButton from '../EditStockButton/EditStockButton.js';
 
 import './StockCardStyling.css';
 
-const StockCard = ({name, boughtAt, latestPrice}) => {
+const StockCard = ({setStocks, getAllStocks, name, boughtAt, latestPrice}) => {
 
     const [totalReturn, setTotalReturn] = useState(0);
     useEffect(() => {
@@ -24,6 +25,13 @@ const StockCard = ({name, boughtAt, latestPrice}) => {
         <>
         <DeleteStockButton
         stockname = {name}
+        setStocks={setStocks}
+        getAllStocks={getAllStocks}
+        />
+        <EditStockButton
+        stockname={name}
+        setStocks={setStocks}
+        getAllStocks={getAllStocks}
         />
     <tr className="stock-card" style={{
         display: "flex",

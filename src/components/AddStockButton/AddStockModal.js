@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react';
 import {addStock} from '../../firebase/firebase.utils.js';
 import {AuthContext} from '../../contexts/AuthContext.js';
-const AddStockModal = ({closeModal}) => {
+const AddStockModal = ({closeModal, getAllStocks, setStocks}) => {
 
     const [stockName, setStockName] = useState('');
     const [boughtPrice, setBoughtPrice] = useState('');
@@ -13,7 +13,9 @@ const AddStockModal = ({closeModal}) => {
         e.preventDefault();
         console.log(authContext.user);
         addStock(authContext.user, stockName,boughtPrice,currentPrice);
-        alert("Aktie tillagd! (refresha sidan, det har fixas sen)");
+        getAllStocks().then(data => {
+            setStocks(data);
+        });
     }
     return(
         <>

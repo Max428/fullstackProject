@@ -1,11 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import EditStockModal from '../EditStockModal/EditStockModal.js';
+import EditStockModal from '../EditStockButton/EditStockModal.js'
 
-const EditStockButton = () => {
+const EditStockButton = ({stockname, getAllStocks, setStocks}) => {
 
     const [showStockModal, setShowModal] = useState(false);
-
-
 
     return(
         <>
@@ -15,6 +13,9 @@ const EditStockButton = () => {
 {showStockModal ? (
     <EditStockModal
     closeModal={() => setShowModal(!showStockModal)}
+    stockname={stockname}
+    getAllStocks={getAllStocks}
+    setStocks={setStocks}
     />
     ) :null }
         </>

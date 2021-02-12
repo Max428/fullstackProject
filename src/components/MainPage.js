@@ -24,7 +24,8 @@ const MainPage = () => {
         
 
     }}>
-    <AddStockButton/>
+    <AddStockButton
+    />
     <SharePortfolioButton/>
 
     </div>
