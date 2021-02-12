@@ -1,7 +1,7 @@
 import React, {useEffect, useState, useContext} from 'react';
 import {DeleteStock} from '../../firebase/firebase.utils.js'; //DeleteStock
 import {AuthContext} from '../../contexts/AuthContext.js';
-const DeleteStockModal = ({closeModal,stockname}) => {
+const DeleteStockModal = ({closeModal,stockname, getAllStocks, setStocks}) => {
 
 
     const authContext = useContext(AuthContext);
@@ -9,7 +9,9 @@ const DeleteStockModal = ({closeModal,stockname}) => {
     const handleDeleteStock = (e) => {
         e.preventDefault();
         DeleteStock(authContext.user, stockname);
-        alert("Aktie borttagen (refresha sidan, det har fixas sen)");
+        getAllStocks().then(data => {
+            setStocks(data);
+        });
     }
     return(
         <>
