@@ -1,7 +1,4 @@
-import React, {useEffect, useState, useContext} from 'react';
-import {AuthContext} from'../contexts/AuthContext.js';
-
-import {readAllStocks, firestore} from '../firebase/firebase.utils.js';
+import React from 'react';
 
 import StockCard from '../components/StockCard/StockCard.js';
 

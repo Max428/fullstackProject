@@ -1,6 +1,4 @@
 import React, {useContext}from "react";
-import SharePortfolioButton from './ShareLinks/ShareButton.js';
-import AddStockButton  from './AddStockButton/AddStockButton.js';
 import StockOverview from '../components/StockOverview.js'
 import {AuthContext} from '../contexts/AuthContext.js';
 

@@ -6,7 +6,6 @@ const DeleteStockButton = ({stockname, getAllStocks, setStocks}) => {
     const [showStockModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        console.log("STOCKNAME I DELETESTOCKBUTTON",stockname);
     })
 
     return(

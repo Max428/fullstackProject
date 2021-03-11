@@ -1,4 +1,4 @@
-import React, {useEffect,useState} from 'react';
+import React, {useState} from 'react';
 import RegistrationForm from '../LoginAndRegistrationForm/RegistrationForm.js';
 import { auth, createUserDocument } from '../../firebase/firebase.utils.js';
 import {useHistory} from 'react-router-dom';
@@ -14,7 +14,6 @@ const RegisterPage = () => {
 
 
     const [registerEmailError, setRegisterEmailError] = useState('');
-    const [resetError, setResetError] = useState('');
     const [registerPasswordError, setRegisterPasswordError] = useState('');
     const [firstNameError, setFirstNameError] = useState('');
     const [lastNameError, setLastNameError] = useState('');
@@ -27,7 +26,6 @@ const RegisterPage = () => {
     const ClearEmailAndPassError = () => {
         setRegisterEmailError('');
         setRegisterPasswordError('');
-        setResetError('');
         setFirstNameError('');
         setLastNameError('');
     };

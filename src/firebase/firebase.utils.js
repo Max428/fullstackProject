@@ -62,19 +62,20 @@ export const addStock = async (
     latestPrice
 ) =>{
     if(!user) return;
-
-    const newlyAddedStock = {
+    const newlyAddedStock = 
+    {
         name : name,
         boughtAt : boughtAt,
-        latestPrice : latestPrice}
-
+        latestPrice : latestPrice
+    }
+    
     firestore.doc(`users/${user}`)
     .get()
     .then((doc) => {
         console.log("USER IN ADDSTOCK", user)
         const userStocks = doc.data().stocks;
 
-        if(userStocks[0].name == ''){
+        if(userStocks[0].name === ''){
             userStocks.shift();
         }
         console.log("usersstock",userStocks);
@@ -104,7 +105,7 @@ export const DeleteStock = async (user, stockName) => {
         console.log("DETTA ÄR STOCKNAME I DELETSTOCK", stockName)
         const userStocks = doc.data().stocks;
 
-      const tempArray = userStocks.filter(stock => stock.name != stockName)
+      const tempArray = userStocks.filter(stock => stock.name !== stockName)
 
         return doc.ref.update({stocks : tempArray})
 

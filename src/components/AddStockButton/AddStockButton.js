@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import AddStockModal from '../AddStockButton/AddStockModal.js';
 
 const AddStockButton = ({getAllStocks, setStocks}) => {
