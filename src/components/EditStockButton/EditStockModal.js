@@ -10,19 +10,23 @@ const EditStockModal = ({closeModal,stockname, getAllStocks, setStocks}) => {
     const [newStockName, setStockName] = useState(stockname);
     const [boughtPrice, setBoughtPrice] = useState('');
     const [currentPrice, setCurrentPrice] = useState('');
+    const [disableRegisterButton, setDisabled] = useState(false);
 
     const authContext = useContext(AuthContext);
 
-    const handleAddStock = (e) => {
+    const handleAddStock =  (e) => {
         e.preventDefault();
+        setDisabled(true)
         EditStock(authContext.user, stockname, newStockName, boughtPrice,currentPrice);
-        getAllStocks().then(data => {
+        setTimeout(() => {
+            getAllStocks().then(data => {
             setStocks(data);
-        });
-        // alert("Aktie redigerad! (refresha sidan, det har fixas sen)");
-    }
-    return(
-        <>
+            });
+        }, 1000);
+        }
+
+return(
+<>
 
 <button onClick={closeModal}>Stäng</button>
 <div>
@@ -30,9 +34,13 @@ const EditStockModal = ({closeModal,stockname, getAllStocks, setStocks}) => {
 
 
 <input placeholder="Aktienamn" onChange={(e) => setStockName(e.target.value)}></input>
-<input placeholder="Inköpspris"onChange={(e) => setBoughtPrice(e.target.value)}></input>
-<input  placeholder="Nuvarande pris"onChange={(e) => setCurrentPrice(e.target.value)}></input>
-<button onClick={(e) => handleAddStock(e)}>klar</button>
+<input placeholder="Inköpspris"onChange={(e) => setBoughtPrice(e.target.value)} type="number"></input>
+<input  placeholder="Nuvarande pris"onChange={(e) => setCurrentPrice(e.target.value)} type="number"></input>
+<button 
+onClick={(e) => handleAddStock(e)}
+disabled={disableRegisterButton}
+
+>klar</button>
 </form>
 </div>
         </>

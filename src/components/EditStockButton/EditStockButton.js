@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, {useState } from 'react';
 import EditStockModal from '../EditStockButton/EditStockModal.js'
 
 const EditStockButton = ({stockname, getAllStocks, setStocks}) => {
