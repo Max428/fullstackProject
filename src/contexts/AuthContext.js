@@ -12,7 +12,6 @@ export default ({children}) => {
 
         auth.onAuthStateChanged((user) => {
             if(user){
-                console.log("THIS IS MY USER", user)
                 getUserData(user.uid);
                 setUser(user.uid)
                 setIsAuthenticated(true);

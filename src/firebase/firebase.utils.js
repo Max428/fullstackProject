@@ -62,29 +62,30 @@ export const addStock = async (
     latestPrice
 ) =>{
     if(!user) return;
-
-    const newlyAddedStock = {
+    const newlyAddedStock = 
+    {
         name : name,
         boughtAt : boughtAt,
-        latestPrice : latestPrice}
-
+        latestPrice : latestPrice
+    }
+    
     firestore.doc(`users/${user}`)
     .get()
     .then((doc) => {
         console.log("USER IN ADDSTOCK", user)
         const userStocks = doc.data().stocks;
 
-        if(userStocks[0].name == ''){
+        if(userStocks[0].name === ''){
             userStocks.shift();
         }
         console.log("usersstock",userStocks);
         userStocks.push(newlyAddedStock);
 
         return doc.ref.update({stocks : userStocks})
-
+        
     })
     .catch((error) => {
-        console.log('FEL', error)
+        console.log('FEL ', error)
         return null;
     })
 
@@ -104,7 +105,7 @@ export const DeleteStock = async (user, stockName) => {
         console.log("DETTA ÄR STOCKNAME I DELETSTOCK", stockName)
         const userStocks = doc.data().stocks;
 
-      const tempArray = userStocks.filter(stock => stock.name != stockName)
+      const tempArray = userStocks.filter(stock => stock.name !== stockName)
 
         return doc.ref.update({stocks : tempArray})
 
@@ -131,26 +132,17 @@ export const EditStock = async (user, stockToEdit, stockName, boughtAt,latestPri
     firestore.doc(`users/${user}`)
     .get()
     .then((doc) => {
-
-    
       const userStocks = doc.data().stocks;
-
-      console.log("stock.name", userStocks[1].name);
-      console.log("stockName", stockName)
-
       const tempArray = userStocks.filter(stock => stock.name !== stockToEdit);
       console.log("MIN TEMPARRAY I EDITSTOck",tempArray);
       tempArray.push(EditedStock);
     //   console.log("MIN TEMPARRAY EFTER PUSH", tempArray);
-        return doc.ref.update({stocks : tempArray});
-
+    return doc.ref.update({stocks : tempArray});
     })
     .catch((error) => {
         console.log('FEL', error)
         return null;
     })
-
-
 }
 ////#endregion
 

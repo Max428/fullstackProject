@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-
-import DeleteStockModal from './DeleteStockModal.js'
+import DeleteStockModal from './DeleteStockModal'
 
 const DeleteStockButton = ({stockname, getAllStocks, setStocks}) => {
 
     const [showStockModal, setShowModal] = useState(false);
 
     useEffect(() => {
-        console.log("STOCKNAME I DELETESTOCKBUTTON",stockname);
     })
 
     return(

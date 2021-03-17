@@ -1,4 +1,4 @@
-import React, { useContext,useEffect } from "react";
+import React, { useContext } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import {auth} from '../firebase/firebase.utils';
 import { AuthContext } from "../contexts/AuthContext";
